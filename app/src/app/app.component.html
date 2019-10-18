@@ -1,3 +1,18 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar color="danger">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>Accueil</ion-item>
+        <ion-item>La carte</ion-item>
+        <ion-item>Les fournisseurs</ion-item>
+        <ion-item>Nos coordonnées</ion-item>
+      </ion-list>
+    </ion-content>
+    </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
 </ion-app>
