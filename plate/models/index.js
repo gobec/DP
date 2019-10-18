@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
-  name : String,
+  nameItem : String,
   ingredients : String,
   price : Float32Array,
   type : String,
@@ -19,4 +19,10 @@ const itemSchema = new Schema({
 
 });
 
+const supplierSchema = new Schema({
+  nameSupplier : String,
+
+});
+
 module.exports = mongoose.model('Item', itemSchema);
+module.exports = mongoose.model('Supplier', supplierSchema);
