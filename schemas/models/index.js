@@ -2,7 +2,7 @@ const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
   nameItem : String,
-  ingredients : String,
+  ingredients : Array,
   price : Float32Array,
   type : String,
   disponibility :{
@@ -19,16 +19,19 @@ const itemSchema = new Schema({
 
 const supplierSchema = new Schema({
   nameSupplier : String,
+  ingredients : Array,
 
 });
 
 const menuSchema = new Schema({
   nameMenu : String,
+  items : Array,
 
 });
 
 const ingredientSchema = new Schema({
   nameMenu : String,
+  suppliers : Array,
 
 });
 
