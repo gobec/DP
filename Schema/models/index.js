@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const TodoSchema = new Schema({
+const PlateSchema = new Schema({
   title : String,
   description : String,
   done : {
@@ -15,4 +15,4 @@ const TodoSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Menu', TodoSchema);
+module.exports = mongoose.model('Plate', PlateSchema);
