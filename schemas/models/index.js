@@ -1,5 +1,3 @@
-const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
@@ -24,5 +22,17 @@ const supplierSchema = new Schema({
 
 });
 
+const menuSchema = new Schema({
+  nameMenu : String,
+
+});
+
+const ingredientSchema = new Schema({
+  nameMenu : String,
+
+});
+
 module.exports = mongoose.model('Item', itemSchema);
 module.exports = mongoose.model('Supplier', supplierSchema);
+module.exports = mongoose.model('Menu', nameMenu);
+module.exports = mongoose.model('Ingredient', ingredientSchema);
