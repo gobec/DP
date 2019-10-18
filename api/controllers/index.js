@@ -72,10 +72,31 @@ function getAllMenus(req, res) {
   
     const newItem = Item ({
         title: req.body.title,
-        description : req.body.description
+        nameItem : req.body.nameItem,
+        ingredients : req.body.ingredients,
+        price : req.body.price,
+        type : req.body.type,
+        disponibility : req.body.disponibility,
+        preparationTime :  req.body.preparationTime,
+        deliverable: req.body.deliverable
     });
+    newItem.save(function(err) {
+        if (err) throw err;
+    
+        res.json({info: 'Success'});
+    
+      });
+    
+}
+
+    function createSupplier(req, res) {
+        const Supplier = require('../../menu/models');
+      
+        const newSupplier= Item ({
+            nameSupplier : req.body.nameSupplier
+        });
   
-    newMenu.save(function(err) {
+    newSupplier.save(function(err) {
       if (err) throw err;
   
       res.json({info: 'Success'});
@@ -102,6 +123,23 @@ function getAllMenus(req, res) {
   
   }
 
+  function modifySupplier(req, res) {
+    const Supplier = require('../../menu/models');
+  
+      Menu.findOneAndUpdate(
+            {_id : req.params.id},
+
+          { nameSupplier : req.body.nameSupplier
+  
+          }, function(err, user) {
+              if (err) throw err;
+  
+              res.json({info: 'Success'});
+  
+          });
+  
+  }
+
   function modifyItem(req, res) {
     const Item = require('../../menu/models');
   
@@ -109,7 +147,13 @@ function getAllMenus(req, res) {
             {_id : req.params.id},
   
           { title: req.body.title,
-            description : req.body.description
+            nameItem : req.body.nameItem,
+            ingredients : req.body.ingredients,
+            price : req.body.price,
+            type : req.body.type,
+            disponibility : req.body.disponibility,
+            preparationTime :  req.body.preparationTime,
+            deliverable: req.body.deliverable
   
           }, function(err, user) {
               if (err) throw err;
@@ -135,7 +179,7 @@ function getAllMenus(req, res) {
   function deleteItem(req, res) {
     const Item = require('../../menu/models');
   
-    Menu.findOneAndRemove(
+    Item.findOneAndRemove(
           {_id : req.params.id}, function(err, item) {
       if (err) throw err;
   
@@ -144,6 +188,17 @@ function getAllMenus(req, res) {
     });
   }
   
+  function deleteSupplier(req, res) {
+    const Supplier = require('../../menu/models');
+  
+    Supplier.findOneAndRemove(
+          {_id : req.params.id}, function(err, Supplier) {
+      if (err) throw err;
+  
+      res.json({info: 'Success'});
+  
+    });
+  }
   
   
   
@@ -157,3 +212,6 @@ function getAllMenus(req, res) {
   module.exports.deleteMenu = deleteMenu;
   module.exports.modifyItem = modifyItem;
   module.exports.deleteItem = deleteItem;
+  module.exports.createSupplier = createSupplier;
+  module.exports.modifySupplier = modifySupplier;
+  module.exports.deleteSupplier = deleteSupplier;
