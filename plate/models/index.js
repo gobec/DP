@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const plateSchema = new Schema({
+const itemSchema = new Schema({
   name : String,
   ingredients : String,
   price : Float32Array,
@@ -19,4 +19,4 @@ const plateSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('Plate', plateSchema);
+module.exports = mongoose.model('Item', itemSchema);

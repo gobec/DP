@@ -1,15 +1,15 @@
-function viewCreatePlate(req, res) {
-    res.send('View create Plate');
+function viewCreateItem(req, res) {
+    res.send('View create Item');
   }
   
-  function viewModifyPlate(req, res) {
-    res.send('View modify Plate');
+  function viewModifyItem(req, res) {
+    res.send('View modify Item');
   }
   
-  function viewDeletePlate(req, res) {
-    res.send('View delete Plate');
+  function viewDeleteItem(req, res) {
+    res.send('View delete Item');
   }
   
-  module.exports.viewCreatePlate = viewCreatePlate;
-  module.exports.viewModifyPlate = viewModifyPlate;
-  module.exports.viewDeletePlate = viewDeletePlate;
+  module.exports.viewCreateItem = viewCreateItem;
+  module.exports.viewModifyItem = viewModifyItem;
+  module.exports.viewDeleteItem = viewDeleteItem;
