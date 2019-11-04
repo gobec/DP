@@ -6,7 +6,7 @@ router.get('/api/menus', (req, res) => {
 });
 
 router.get('/api/type/:type', (req, res) => {
-    controller.getOnetype(req, res);
+    controller.getOneType(req, res);
   });
 
 router.get('/api/menu/:id', (req, res) => {
@@ -15,6 +15,14 @@ router.get('/api/menu/:id', (req, res) => {
 
 router.get('/api/item/:id', (req, res) => {
     controller.getOneItem(req, res);
+  });
+
+router.get('/api/item/:id', (req, res) => {
+    controller.getOneItem(req, res);
+  });
+
+router.get('/api/items', (req, res) => {
+    controller.getAllItem(req, res);
   });
 
 router.post('/api/menu', (req, res) => {

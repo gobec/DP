@@ -3,6 +3,8 @@ const app = express();
 
 //to access form data
 const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 //to access the database stored in MongoDB
 const mongoose = require('mongoose');

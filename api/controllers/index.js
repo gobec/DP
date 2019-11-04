@@ -1,7 +1,7 @@
 function getAllMenus(req, res) {
-    const Menu = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Menu.find( function(err, menu) {
+    models.Menu.find( function(err, menu) {
   
       if (err) throw err;
   
@@ -12,9 +12,9 @@ function getAllMenus(req, res) {
   }
 
   function getOneType(req, res) {
-    const Item = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Item.find({type :req.params.id}, function(err, item) {
+    models.Item.find({type :req.params.type.toLowerCase()}, function(err, item) {
   
       if (err) throw err;
   
@@ -25,22 +25,33 @@ function getAllMenus(req, res) {
   }
 
   function getOneItem(req, res) {
-    const Item = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Item.find({_id : req.params.id}, function(err, item) {
+    models.Item.find({_id : req.params.id}, function(err, item) {
   
       if (err) throw err;
   
       res.json(item);
   
     });
+  }
+
+  function getAllItem(req, res) {
+    const models = require('../../schemas/models');
   
+    models.Item.find(function(err, item) {
+  
+      if (err) throw err;
+  
+      res.json(item);
+  
+    });
   }
   
   function getItemByName(name) {
-    const Item = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Item.find({nameItem : name}, function(err, item) {
+    models.Item.find({nameItem : name}, function(err, item) {
   
       if (err) throw err;
   
@@ -51,9 +62,9 @@ function getAllMenus(req, res) {
   }
 
   function getOneMenu(req, res) {
-    const Menu = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Menu.find({_id : req.params.id}, function(err, menu) {
+    models.Menu.find({_id : req.params.id}, function(err, menu) {
   
       if (err) throw err;
   
@@ -64,9 +75,9 @@ function getAllMenus(req, res) {
   }
   
   function createMenu(req, res) {
-    const Menu = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    const newMenu = Menu ({
+    const newMenu = models.Menu ({
         title: req.body.title,
         description : req.body.description,
         items : getItemByName(req.body.name)
@@ -82,14 +93,13 @@ function getAllMenus(req, res) {
   }
 
   function createItem(req, res) {
-    const Item = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    const newItem = Item ({
-        title: req.body.title,
+    const newItem = models.Item ({
         nameItem : req.body.nameItem,
         ingredients : req.body.ingredients,
         price : req.body.price,
-        type : req.body.type,
+        type : req.body.type.toLowerCase(),
         disponibility : req.body.disponibility,
         preparationTime :  req.body.preparationTime,
         deliverable: req.body.deliverable
@@ -103,9 +113,9 @@ function getAllMenus(req, res) {
     
 }
   function modifyMenu(req, res) {
-    const Menu = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-      Menu.findOneAndUpdate(
+      models.Menu.findOneAndUpdate(
             {_id : req.params.id},
   
           { title: req.body.title,
@@ -122,9 +132,9 @@ function getAllMenus(req, res) {
 
 
   function modifyItem(req, res) {
-    const Item = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-      Item.findOneAndUpdate(
+      models.Item.findOneAndUpdate(
             {_id : req.params.id},
   
           { title: req.body.title,
@@ -146,9 +156,9 @@ function getAllMenus(req, res) {
   }
   
   function deleteMenu(req, res) {
-    const Menu = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Menu.findOneAndRemove(
+    models.Menu.findOneAndRemove(
           {_id : req.params.id}, function(err, menu) {
       if (err) throw err;
   
@@ -158,9 +168,9 @@ function getAllMenus(req, res) {
   }
 
   function deleteItem(req, res) {
-    const Item = require('../../schemas/models');
+    const models = require('../../schemas/models');
   
-    Item.findOneAndRemove(
+    models.Item.findOneAndRemove(
           {_id : req.params.id}, function(err, item) {
       if (err) throw err;
   
@@ -175,7 +185,9 @@ function getAllMenus(req, res) {
   module.exports.getOneMenu = getOneMenu;
   module.exports.getOneItem = getOneItem;
   module.exports.createMenu = createMenu;
+  module.exports.createItem = createItem;
   module.exports.modifyMenu = modifyMenu;
   module.exports.deleteMenu = deleteMenu;
   module.exports.modifyItem = modifyItem;
   module.exports.deleteItem = deleteItem;
+  module.exports.getAllItem  = getAllItem;
