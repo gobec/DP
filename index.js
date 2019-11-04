@@ -1,15 +1,13 @@
 const express = require('express');
 const app = express();
 
-app.listen(3000);
-console.log('Running on localhost:3000');
 
 //to access form data
 const bodyParser = require('body-parser');
 
 //to access the database stored in MongoDB
 const mongoose = require('mongoose');
-database = 'mongodb://localhost:27017/todo';
+database = 'mongodb://localhost:27017/DP';
 mongoose.connect(database,(err) => {
     if(err)
         throw err;
