@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 //to access the database stored in MongoDB
 const mongoose = require('mongoose');
-database = 'mongodb://localhost:27017/DP';
+database = 'mongodb://localhost:27017/DP'; 
 mongoose.connect(database,(err) => {
     if(err)
         throw err;
