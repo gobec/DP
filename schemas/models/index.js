@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
   nameItem : String,
-  ingredients : Array,
+  ingredients : mongoose.Array,
   price : mongoose.Decimal128,
   type : String,
   disponibility :{
@@ -19,26 +19,14 @@ const itemSchema = new Schema({
 
 });
 
-const supplierSchema = new Schema({
-  nameSupplier : String,
-  ingredients : Array,
-
-});
 
 const menuSchema = new Schema({
   nameMenu : String,
-  items : Array,
+  items : [itemSchema],
 
 });
 
-const ingredientSchema = new Schema({
 
-  nameIngredient : String,
-  suppliers : Array,
-
-});
 
 module.exports = mongoose.model('Item', itemSchema);
-module.exports = mongoose.model('Supplier', supplierSchema);
-module.exports = mongoose.model('Ingredient', ingredientSchema);
 module.exports = mongoose.model('Menu', menuSchema);
