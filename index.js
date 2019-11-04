@@ -1,9 +1,6 @@
 const express = require('express');
 const app = express();
 
-app.listen(3000);
-console.log('Running on localhost:3000');
-
 //to access form data
 const bodyParser = require('body-parser');
 
