@@ -1,7 +1,7 @@
 function getAllMenus(req, res) {
-    const Menu = require('../../menu/models');
+    const models = require('../../schemas/models');
   
-    Menu.find({}, function(err, menu) {
+    models.Menu.find( function(err, menu) {
   
       if (err) throw err;
   
@@ -10,11 +10,61 @@ function getAllMenus(req, res) {
     });
   
   }
+
+  function getOneType(req, res) {
+    const models = require('../../schemas/models');
   
+    models.Item.find({type :req.params.type.toLowerCase()}, function(err, item) {
+  
+      if (err) throw err;
+  
+      res.json(item);
+  
+    });
+  
+  }
+
+  function getOneItem(req, res) {
+    const models = require('../../schemas/models');
+  
+    models.Item.find({_id : req.params.id}, function(err, item) {
+  
+      if (err) throw err;
+  
+      res.json(item);
+  
+    });
+  }
+
+  function getAllItem(req, res) {
+    const models = require('../../schemas/models');
+  
+    models.Item.find(function(err, item) {
+  
+      if (err) throw err;
+  
+      res.json(item);
+  
+    });
+  }
+  
+  function getItemByName(nameItem) {
+    const models = require('../../schemas/models');
+  
+    models.Item.find({ nameItem : req.params.nameItem}, function(err, item) {
+  
+      if (err) throw err;
+  
+      res.json(item);
+  
+    });
+  
+  }
+
   function getOneMenu(req, res) {
-    const Menu = require('../../menu/models');
+    const models = require('../../schemas/models');
   
-    Menu.find({_id : req.params.id}, function(err, menu) {
+    models.Menu.find({_id : req.params.id}, function(err, menu) {
   
       if (err) throw err;
   
@@ -25,11 +75,12 @@ function getAllMenus(req, res) {
   }
   
   function createMenu(req, res) {
-    const Menu = require('../../menu/models');
+    const models = require('../../schemas/models');
   
-    const newMenu = Menu ({
-        title: req.body.title,
-        description : req.body.description
+    const newMenu = models.Menu ({
+        nameMenu: req.nameMenu,
+        description : req.body.description,
+        items : req.body.items
     });
   
     newMenu.save(function(err) {
@@ -40,11 +91,31 @@ function getAllMenus(req, res) {
     });
   
   }
+
+  function createItem(req, res) {
+    const models = require('../../schemas/models');
   
+    const newItem = models.Item ({
+        nameItem : req.body.nameItem,
+        ingredients : req.body.ingredients,
+        price : req.body.price,
+        type : req.body.type.toLowerCase(),
+        disponibility : req.body.disponibility,
+        preparationTime :  req.body.preparationTime,
+        deliverable: req.body.deliverable
+    });
+    newItem.save(function(err) {
+        if (err) throw err;
+    
+        res.json({info: 'Success'});
+    
+      });
+    
+}
   function modifyMenu(req, res) {
-    const Menu = require('../../menu/models');
+    const models = require('../../schemas/models');
   
-      Menu.findOneAndUpdate(
+      models.Menu.findOneAndUpdate(
             {_id : req.params.id},
   
           { title: req.body.title,
@@ -58,12 +129,49 @@ function getAllMenus(req, res) {
           });
   
   }
+
+
+  function modifyItem(req, res) {
+    const models = require('../../schemas/models');
+  
+      models.Item.findOneAndUpdate(
+            {_id : req.params.id},
+  
+          { title: req.body.title,
+            nameItem : req.body.nameItem,
+            ingredients : req.body.ingredients,
+            price : req.body.price,
+            type : req.body.type,
+            disponibility : req.body.disponibility,
+            preparationTime :  req.body.preparationTime,
+            deliverable: req.body.deliverable
+  
+          }, function(err, user) {
+              if (err) throw err;
+  
+              res.json({info: 'Success'});
+  
+          });
+  
+  }
   
   function deleteMenu(req, res) {
-    const Menu = require('../../menu/models');
+    const models = require('../../schemas/models');
   
-    Menu.findOneAndRemove(
+    models.Menu.findOneAndRemove(
           {_id : req.params.id}, function(err, menu) {
+      if (err) throw err;
+  
+      res.json({info: 'Success'});
+  
+    });
+  }
+
+  function deleteItem(req, res) {
+    const models = require('../../schemas/models');
+  
+    models.Item.findOneAndRemove(
+          {_id : req.params.id}, function(err, item) {
       if (err) throw err;
   
       res.json({info: 'Success'});
@@ -72,11 +180,14 @@ function getAllMenus(req, res) {
   }
   
   
-  
-  
   module.exports.getAllMenus = getAllMenus;
-  module.exports.getOneMenus = getOneMenus;
+  module.exports.getOneType = getOneType;
+  module.exports.getOneMenu = getOneMenu;
+  module.exports.getOneItem = getOneItem;
   module.exports.createMenu = createMenu;
+  module.exports.createItem = createItem;
   module.exports.modifyMenu = modifyMenu;
   module.exports.deleteMenu = deleteMenu;
-  
+  module.exports.modifyItem = modifyItem;
+  module.exports.deleteItem = deleteItem;
+  module.exports.getAllItem  = getAllItem;
