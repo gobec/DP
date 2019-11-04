@@ -48,14 +48,14 @@ function getAllMenus(req, res) {
     });
   }
   
-  function getItemByName(name) {
+  function getItemByName(nameItem) {
     const models = require('../../schemas/models');
   
-    models.Item.find({nameItem : name}, function(err, item) {
+    models.Item.find({ nameItem : req.params.nameItem}, function(err, item) {
   
       if (err) throw err;
   
-      return item;
+      res.json(item);
   
     });
   
@@ -78,9 +78,9 @@ function getAllMenus(req, res) {
     const models = require('../../schemas/models');
   
     const newMenu = models.Menu ({
-        title: req.body.title,
+        nameMenu: req.nameMenu,
         description : req.body.description,
-        items : getItemByName(req.body.name)
+        items : req.body.items
     });
   
     newMenu.save(function(err) {
