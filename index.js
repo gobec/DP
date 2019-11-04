@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 
-
 //to access form data
 const bodyParser = require('body-parser');
 
