@@ -1,10 +1,10 @@
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
-  _id : Int8Array,
   nameItem : String,
   ingredients : Array,
-  price : Float32Array,
+  price : mongoose.Decimal128,
   type : String,
   disponibility :{
     type : Boolean,
@@ -14,33 +14,31 @@ const itemSchema = new Schema({
     type : Boolean,
     default : false
   },
-  preparationTime :Int8Array,
+  preparationTime :mongoose.Number,
   menus : Array,
 
 });
 
 const supplierSchema = new Schema({
-  _id : Int8Array,
   nameSupplier : String,
   ingredients : Array,
 
 });
 
 const menuSchema = new Schema({
-  _id : Int8Array,
   nameMenu : String,
   items : Array,
 
 });
 
 const ingredientSchema = new Schema({
-  _id : Int8Array,
-  nameMenu : String,
+
+  nameIngredient : String,
   suppliers : Array,
 
 });
 
 module.exports = mongoose.model('Item', itemSchema);
 module.exports = mongoose.model('Supplier', supplierSchema);
-module.exports = mongoose.model('Menu', nameMenu);
 module.exports = mongoose.model('Ingredient', ingredientSchema);
+module.exports = mongoose.model('Menu', menuSchema);
