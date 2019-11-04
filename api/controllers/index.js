@@ -37,6 +37,19 @@ function getAllMenus(req, res) {
   
   }
   
+  function getItemByName(name) {
+    const Item = require('../../schemas/models');
+  
+    Item.find({nameItem : name}, function(err, item) {
+  
+      if (err) throw err;
+  
+      return item;
+  
+    });
+  
+  }
+
   function getOneMenu(req, res) {
     const Menu = require('../../schemas/models');
   
@@ -55,7 +68,8 @@ function getAllMenus(req, res) {
   
     const newMenu = Menu ({
         title: req.body.title,
-        description : req.body.description
+        description : req.body.description,
+        items : getItemByName(req.body.name)
     });
   
     newMenu.save(function(err) {
@@ -88,23 +102,6 @@ function getAllMenus(req, res) {
       });
     
 }
-
-    function createSupplier(req, res) {
-        const Supplier = require('../../schemas/models');
-      
-        const newSupplier= Item ({
-            nameSupplier : req.body.nameSupplier
-        });
-  
-    newSupplier.save(function(err) {
-      if (err) throw err;
-  
-      res.json({info: 'Success'});
-  
-    });
-  
-  }
-  
   function modifyMenu(req, res) {
     const Menu = require('../../schemas/models');
   
@@ -123,22 +120,6 @@ function getAllMenus(req, res) {
   
   }
 
-  function modifySupplier(req, res) {
-    const Supplier = require('../../schemas/models');
-  
-      Menu.findOneAndUpdate(
-            {_id : req.params.id},
-
-          { nameSupplier : req.body.nameSupplier
-  
-          }, function(err, user) {
-              if (err) throw err;
-  
-              res.json({info: 'Success'});
-  
-          });
-  
-  }
 
   function modifyItem(req, res) {
     const Item = require('../../schemas/models');
@@ -188,20 +169,6 @@ function getAllMenus(req, res) {
     });
   }
   
-  function deleteSupplier(req, res) {
-    const Supplier = require('../../schemas/models');
-  
-    Supplier.findOneAndRemove(
-          {_id : req.params.id}, function(err, Supplier) {
-      if (err) throw err;
-  
-      res.json({info: 'Success'});
-  
-    });
-  }
-  
-  
-  
   
   module.exports.getAllMenus = getAllMenus;
   module.exports.getOneType = getOneType;
@@ -212,6 +179,3 @@ function getAllMenus(req, res) {
   module.exports.deleteMenu = deleteMenu;
   module.exports.modifyItem = modifyItem;
   module.exports.deleteItem = deleteItem;
-  module.exports.createSupplier = createSupplier;
-  module.exports.modifySupplier = modifySupplier;
-  module.exports.deleteSupplier = deleteSupplier;

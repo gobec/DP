@@ -23,6 +23,7 @@ const itemSchema = new Schema({
 const menuSchema = new Schema({
   nameMenu : String,
   items : [itemSchema],
+  description : String,
 
 });
 
