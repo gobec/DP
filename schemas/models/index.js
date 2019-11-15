@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
   nameItem : String,
   ingredients : [Schema.Types.String],
-  price : mongoose.Decimal128,
+  price : mongoose.Number,
   type : String,
   disponibility :{
     type : Boolean,
