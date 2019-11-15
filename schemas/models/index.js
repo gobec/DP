@@ -21,9 +21,9 @@ const itemSchema = new Schema({
 
 const menuSchema = new Schema({
   nameMenu : String,
-  entree : itemSchema,
-  plat : itemSchema,
-  dessert : itemSchema,
+  entree : Schema.Types.ObjectId,
+  plat : Schema.Types.ObjectId,
+  dessert : Schema.Types.ObjectId,
   description : String,
 
 });
