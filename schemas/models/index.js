@@ -22,7 +22,9 @@ const itemSchema = new Schema({
 
 const menuSchema = new Schema({
   nameMenu : String,
-  items : [Schema.Types.String],
+  entree : itemSchema,
+  plat : itemSchema,
+  dessert : itemSchema,
   description : String,
 
 });
