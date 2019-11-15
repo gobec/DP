@@ -17,10 +17,6 @@ router.get('/api/item/:id', (req, res) => {
     controller.getOneItem(req, res);
   });
 
-router.get('/api/item/:id', (req, res) => {
-    controller.getOneItem(req, res);
-  });
-
 router.get('/api/items', (req, res) => {
     controller.getAllItem(req, res);
   });
