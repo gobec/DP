@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController, NavController } from '@ionic/angular';
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-carte',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartePage implements OnInit {
 
-  constructor() { }
+  entree: any;
+  api: RestService;
+  dessert: any;
 
-  ngOnInit() {
+  constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController) {
+    this.api = restapi;
+   }
+
+   async getOneType(type: any){
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getOneType(type)
+      .subscribe(res => {
+        this.entree = res;
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
   }
 
+  ngOnInit() {
+    this.getOneType("entree");
+  }
 }

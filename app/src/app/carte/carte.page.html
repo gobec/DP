@@ -8,12 +8,34 @@
 </ion-header>
 
 <ion-content>
+
   <ion-list>
-    <ion-list-header>Menus</ion-list-header>
+    <ion-list-header>Entrées</ion-list-header>
+      <ion-item *ngFor="let entree of plats[entree]">
+        <ion-label>
+          <h3>{{entree.nameItem}}</h3><div class="price">{{entree.price}}€</div>
+          <p *ngFor="let ingredient of entree.ingredients">{{entree.ingredients}}</p>
+        </ion-label>
+      </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Plats</ion-list-header>
     <ion-item-group>
       <ion-item-divider>
-        <ion-label></ion-label>
+        <ion-label>Type plat</ion-label>
       </ion-item-divider>
+      <ion-item>Nom plat</ion-item>
     </ion-item-group>
+  </ion-list>
+  
+  <ion-list>
+    <ion-list-header>Desserts</ion-list-header>
+      <ion-item *ngFor="let dessert of desserts">
+        <ion-label>
+          <h3>{{dessert.nameItem}}</h3><div class="price">{{dessert.price}}€</div>
+          <p *ngFor="let ingredient of dessert.ingredients">{{dessert.ingredients}}</p>
+          </ion-label>
+      </ion-item>
   </ion-list>
 </ion-content>
