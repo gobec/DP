@@ -75,12 +75,13 @@ function getAllMenus(req, res) {
   }
   
   function createMenu(req, res) {
-    const models = require('../../schemas/models');
-  
+    const models = require('../../schemas/models');    
     const newMenu = models.Menu ({
-        nameMenu: req.nameMenu,
+        nameMenu: req.body.nameMenu,
         description : req.body.description,
-        items : req.body.items
+        entree : req.body.entree,
+        plat :  req.body.plat,
+        dessert : req.body.dessert,
     });
   
     newMenu.save(function(err) {
