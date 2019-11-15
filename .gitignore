@@ -1,5 +1,5 @@
 # Don't track content of these folders
-data/*
+data/
 node_modules/
 
 
@@ -35,3 +35,5 @@ platforms
 plugins
 www
 
+data
+node_modules
