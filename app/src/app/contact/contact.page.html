@@ -1,8 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
+      
       <ion-menu-button color="danger"></ion-menu-button>
     </ion-buttons>
+    
     <ion-title>Contact</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -19,19 +21,55 @@
       <h3>Coordonnées</h3>
   <p><ion-icon name="pin"></ion-icon>4 allée de l’orangerie, 42580 L’Etrat</p>
   <p><ion-icon name="call"></ion-icon> 04 77 56 46 52</p>
-  <p><ion-icon name="mail"></ion-icon> email@gmail.com</p>
+  <!--<p><ion-icon name="mail"></ion-icon> email@gmail.com</p>-->
   <p><ion-icon name="time"></ion-icon>Du mardi au Dimanche : 12h-14h & 19h-22h30</p>
 
 
-  <h3>Sur les Réseaux Sociaux</h3>
-  <p><ion-buttons ><ion-icon name="logo-facebook"></ion-icon></ion-buttons>Du mardi au Dimanche : 12h-14h & 19h-22h30</p> <!-- faire href vers fb-->
+  <h3>Envoyer nous directement un message</h3>
+  <h4>Sur les réseaux sociaux</h4>
+  <p>
+    <ion-buttons >
+      <ion-button color="blue" href="https://www.facebook.fr">
+        <ion-icon  name="logo-facebook"></ion-icon>
+        DiscoPizza
+      </ion-button>
+      <ion-button color="red" href="https://www.instagram.com">
+        <ion-icon  name="logo-instagram"></ion-icon>
+        @DP
+      </ion-button>
+      <ion-button color="violet" href="https://www.twitter.com">
+        <ion-icon  name="logo-twitter"></ion-icon>
+        #DP
+      </ion-button>
+    </ion-buttons>
+    
+  </p> <!-- faire href vers fb-->
 
-    </section>
+  </section>
+  
   <section>
+      <h4>Par mail</h4>
     <form method="post" action="/post.html">
-      <div class="ion-text-wrap"><input type="text" name="p1"></div>
-      <div class="ion-text-wrap"><input type="text" name="p1"></div>
-      <div class="ion-text-wrap"><input type="textarea" name="p1"></div>
+      <div class="ion-text-wrap">
+        <label for="name" >Nom : </label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div class="ion-text-wrap">
+        <label for="email" >Email: </label>
+        <input type="text" name="email" id="email">
+      </div>
+      <div class="ion-text-wrap">
+        <label for="phone" >Telephone : </label>
+        <input type="text" name="phone" id="phone">
+      </div>
+      <div class="ion-text-wrap">
+        <label for="object" >Objet : </label>
+        <input type="text" name="object" id="object">
+      </div>
+      <div class="ion-text-wrap">
+        <label for="comment" >Message : </label>
+        <input type="textarea" name="comment" id="comment">
+      </div>
       <input type="submit" value="post">
     </form>
   </section>

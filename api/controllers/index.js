@@ -95,7 +95,7 @@ function getAllMenus(req, res) {
 
   function createItem(req, res) {
     const models = require('../../schemas/models');
-  
+    //res.send(req.body);
     const newItem = models.Item ({
         nameItem : req.body.nameItem,
         ingredients : req.body.ingredients,
