@@ -9,15 +9,15 @@ import { RestService } from '../rest.service';
 })
 export class CartePage implements OnInit {
 
-  entree: any;
+  plats: any;
   api: RestService;
-  dessert: any;
 
   constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController) {
     this.api = restapi;
-   }
+    this.plats = [];
+  }
 
-   async getOneType(type: any){
+  async getOneType(type: any, id: any){
     const loading = await this.loadingController.create({
       message: 'Loading'
     });
@@ -25,7 +25,7 @@ export class CartePage implements OnInit {
     await loading.present();
     await this.api.getOneType(type)
       .subscribe(res => {
-        this.entree = res;
+        this.plats[id]=(res);
         loading.dismiss();
       }, err => {
         console.log(err);
@@ -34,6 +34,7 @@ export class CartePage implements OnInit {
   }
 
   ngOnInit() {
-    this.getOneType("entree");
+    this.getOneType("entree", 0);
+    this.getOneType("dessert", 2);
   }
 }
