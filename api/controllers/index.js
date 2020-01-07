@@ -94,8 +94,8 @@ function getAllMenus(req, res) {
 
   function getTodayMenu(req, res) {
     const models = require('../../schemas/models');
-    var d = new Date();
     
+    console.log(d.getDay())
     models.Menu.find({day: d.getDay()}, function(err, menu) {
   
       if (err) throw err;
@@ -224,3 +224,4 @@ function getAllMenus(req, res) {
   module.exports.deleteItem = deleteItem;
   module.exports.getAllItem  = getAllItem;
   module.exports.getAllType = getAllType;
+  module.exports.getTodayMenu = getTodayMenu;
