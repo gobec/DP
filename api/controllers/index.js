@@ -112,6 +112,8 @@ function getAllMenus(req, res) {
         entree : req.body.entree,
         plat :  req.body.plat,
         dessert : req.body.dessert,
+        day : req.body.day,
+        price : req.body.price,
     });
   
     newMenu.save(function(err) {

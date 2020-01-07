@@ -48,4 +48,11 @@ export class RestService {
       map(this.extractData),
       catchError(this.handleError));
   }
+
+  getTodayMenu(): Observable<any> {
+    const apiUrl = "http://localhost:3000/api/todaymenu/";
+    return this.http.get(apiUrl, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
 }

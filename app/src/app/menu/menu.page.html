@@ -10,4 +10,14 @@
 <ion-content>
 <div><h1>Menus du jour</h1><span>{{currentDate}}</span></div>
 
+<section>
+  <ion-item *ngFor="let menu of menus">
+    <ion-label>
+      <h3>{{menu.nameMenu}}</h3>
+      <div class="price">{{menu.price}}€</div>
+    </ion-label>
+  </ion-item>
+
+</section>
+
 </ion-content>
