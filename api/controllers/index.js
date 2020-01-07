@@ -95,7 +95,7 @@ function getAllMenus(req, res) {
   function getTodayMenu(req, res) {
     const models = require('../../schemas/models');
     const d = new Date
-    models.Menu.find({date: d.getDay()}, function(err, menu) {
+    models.Menu.find({day: d.getDay()}, function(err, menu) {
   
       if (err) throw err;
   
