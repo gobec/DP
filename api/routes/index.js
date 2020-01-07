@@ -29,6 +29,14 @@ router.post('/api/menu', (req, res) => {
   controller.createMenu(req, res);
 });
 
+router.get('/api/alltype', (req, res) => {
+  controller.getAllType(req, res);
+});
+
+router.get('/api/todaymenu', (req, res) => {
+  controller.getTodayMenu(req, res);
+});
+
 router.post('/api/item', (req, res) => {
     controller.createItem(req, res);
   });
@@ -48,7 +56,6 @@ router.put('/api/item/:id', (req, res) => {
 router.delete('/api/menu/:id', (req, res) => {
   controller.deleteMenu(req, res);
 });
-
 
 
 module.exports = router;

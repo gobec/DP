@@ -36,9 +36,28 @@ function getAllMenus(req, res) {
     });
   }
 
-  function getAllItem(req, res) {
+  function getAllType(req, res) {
     const models = require('../../schemas/models');
   
+    models.Item.find(function(err, item) {
+  
+      if (err) throw err;
+
+      var flags = [], output = [];
+      for( i=0; i<item.length; i++) {
+        if( flags[item[i].type]) continue;
+        flags[item[i].type] = true;
+        output.push(item[i].type);
+
+    }
+    
+      res.json(output);
+  
+    });
+  }
+
+  function getAllItem(req, res) {
+    const models = require('../../schemas/models');
     models.Item.find(function(err, item) {
   
       if (err) throw err;
@@ -47,7 +66,7 @@ function getAllMenus(req, res) {
   
     });
   }
-  
+
   function getItemByName(nameItem) {
     const models = require('../../schemas/models');
   
@@ -71,7 +90,18 @@ function getAllMenus(req, res) {
       res.json(menu);
   
     });
+  }
+
+  function getTodayMenu(req, res) {
+    const models = require('../../schemas/models');
+    const d = new Date
+    models.Menu.find({date: d.getDay()}, function(err, menu) {
   
+      if (err) throw err;
+  
+      res.json(menu);
+  
+    });
   }
   
   function createMenu(req, res) {
@@ -192,3 +222,5 @@ function getAllMenus(req, res) {
   module.exports.modifyItem = modifyItem;
   module.exports.deleteItem = deleteItem;
   module.exports.getAllItem  = getAllItem;
+  module.exports.getAllType = getAllType;
+  module.exports.getTodayMenu = getTodayMenu;
