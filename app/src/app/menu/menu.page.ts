@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuPage implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  currentDate : any;
+  
+  constructor() { 
+    this.currentDate= new Date();
   }
+
+  getTodayDate()
+  {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    this.currentDate = this.currentDate.toLocaleDateString('fr-FR', options)
+    console.log(this.currentDate);
+  }
+  
+  ngOnInit() {
+    this.getTodayDate()
+
+  }
+
 
 }
