@@ -41,4 +41,11 @@ export class RestService {
       map(this.extractData),
       catchError(this.handleError));
   }
+
+  getTypes(): Observable<any> {
+    const apiUrl = "http://localhost:3000/api/alltype/";
+    return this.http.get(apiUrl, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
 }

@@ -14,27 +14,32 @@
       <ion-item *ngFor="let entree of plats[0]">
         <ion-label>
           <h3>{{entree.nameItem}}</h3><div class="price">{{entree.price}}€</div>
-          <p *ngFor="let ingredient of entree.ingredients">{{entree.ingredients}}</p>
+          <p *ngFor="let ingredient of entree.ingredients">{{ingredient}}</p>
         </ion-label>
       </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-list-header>Plats</ion-list-header>
-    <ion-item-group>
+    <ion-item-group *ngFor="let type of types; let i=index">
       <ion-item-divider>
-        <ion-label>Type plat</ion-label>
+        <ion-label>{{type}}</ion-label>
       </ion-item-divider>
-      <ion-item>Nom plat</ion-item>
+      <ion-item *ngFor="let plat of plats[i+2]">
+        <ion-label>
+          <h3>{{plat.nameItem}}</h3><div class="price">{{plat.price}}€</div>
+          <p *ngFor="let ingredient of plat.ingredients">{{ingredient}}</p>
+        </ion-label>
+      </ion-item>
     </ion-item-group>
   </ion-list>
   
   <ion-list>
     <ion-list-header>Desserts</ion-list-header>
-      <ion-item *ngFor="let dessert of plats[2]">
+      <ion-item *ngFor="let dessert of plats[1]">
         <ion-label>
           <h3>{{dessert.nameItem}}</h3><div class="price">{{dessert.price}}€</div>
-          <p *ngFor="let ingredient of dessert.ingredients">{{dessert.ingredients}}</p>
+          <p *ngFor="let ingredient of dessert.ingredients">{{ingredient}}</p>
           </ion-label>
       </ion-item>
   </ion-list>
