@@ -18,7 +18,24 @@ label
 {
     text-align: left;
 }
-form input
-{
-    text-align: right;
-}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+.col-30 {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
+  }
+  
+.col-70 {
+    float: left;
+    width: 70%;
+    margin-top: 6px;
+  }
+
+  
