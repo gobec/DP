@@ -48,7 +48,7 @@ function getAllMenus(req, res) {
         if( flags[item[i].type]) continue;
         flags[item[i].type] = true;
         output.push(item[i].type);
-        
+
     }
     
       res.json(output);
@@ -90,7 +90,19 @@ function getAllMenus(req, res) {
       res.json(menu);
   
     });
+  }
+
+  function getTodayMenu(req, res) {
+    const models = require('../../schemas/models');
+    var d = new Date();
+    
+    models.Menu.find({day: d.getDay()}, function(err, menu) {
   
+      if (err) throw err;
+  
+      res.json(menu);
+  
+    });
   }
   
   function createMenu(req, res) {
