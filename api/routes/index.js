@@ -49,6 +49,9 @@ router.delete('/api/menu/:id', (req, res) => {
   controller.deleteMenu(req, res);
 });
 
+router.get('/api/alltype', (req, res) => {
+  controller.getAllType(req, res);
+});
 
 
 module.exports = router;
