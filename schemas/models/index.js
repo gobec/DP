@@ -26,6 +26,7 @@ const menuSchema = new Schema({
   dessert : Schema.Types.ObjectId,
   description : String,
   day : Schema.Types.Number,
+  price : mongoose.Number,
 
 });
 
