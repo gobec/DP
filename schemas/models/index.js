@@ -25,7 +25,7 @@ const menuSchema = new Schema({
   plat : Schema.Types.ObjectId,
   dessert : Schema.Types.ObjectId,
   description : String,
-  date : Schema.Types.Date,
+  day : Schema.Types.Number,
 
 });
 
