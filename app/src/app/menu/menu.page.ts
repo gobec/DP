@@ -19,6 +19,23 @@ export class MenuPage implements OnInit {
     this.api = restapi;
   }
 
+  async getItem(item: any){
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getOneItem(item)
+      .subscribe(res => {
+        console.log(res);
+        return res.nameItem
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+  }
+
   async getTodayMenu(){
     const loading = await this.loadingController.create({
       message: 'Loading'
@@ -28,9 +45,11 @@ export class MenuPage implements OnInit {
       .subscribe(res => {
         this.menus=res;
         console.log(this.menus);
-        this.menus[0].entreeName = this.getItem(this.menus[0].entree);
-        this.menus[0].platName = this.getItem(this.menus[0].plat);
-        this.menus[0].dessertName = this.getItem(this.menus[0].dessert);
+        for (var i=0; i<this.menus.length;i++){
+          this.menus[i].entreeName = this.getItem(this.menus[i].entree);
+          this.menus[i].platName = this.getItem(this.menus[i].plat);
+          this.menus[i].dessertName = this.getItem(this.menus[i].dessert);
+        }
         console.log(this.menus);
         loading.dismiss();
       }, err => {
@@ -38,17 +57,6 @@ export class MenuPage implements OnInit {
         loading.dismiss();
       });
   }
-
-  async getItem(item: any){
-    console.log(1);
-    this.api.getOneItem(item)
-      .subscribe(res => {
-        console.log(res);
-        return res.nameItem
-      }, err => {
-        console.log(err);
-        });
-  } 
 
   getTodayDate()
   {
@@ -61,6 +69,4 @@ export class MenuPage implements OnInit {
     this.getTodayDate();
     this.getTodayMenu();
   }
-
-
 }
