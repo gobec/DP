@@ -28,7 +28,8 @@ export class MenuPage implements OnInit {
     await this.api.getOneItem(item)
       .subscribe(res => {
         loading.dismiss();
-        return res.nameItem
+        console.log(res[0].nameItem);
+        return res[0].nameItem
       }, err => {
         console.log(err);
         loading.dismiss();

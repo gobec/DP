@@ -58,7 +58,7 @@ export class RestService {
   }
 
   getOneItem(item: any): Observable<any> {
-    const apiUrl = "http://localhost:3000/api/item/"; + item;
+    const apiUrl = "http://localhost:3000/api/item/" + item;
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
