@@ -51,7 +51,6 @@ export class CartePage implements OnInit {
         for (var i=0;i<this.types.length;i++){
           this.getOneType(this.types[i], i+2);
         }
-        console.log(this.types);
         loading.dismiss();
       }, err => {
         console.log(err);

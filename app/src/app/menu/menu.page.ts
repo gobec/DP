@@ -27,7 +27,10 @@ export class MenuPage implements OnInit {
     await this.api.getTodayMenu()
       .subscribe(res => {
         this.menus=res;
-        console.log("michel");
+        console.log(this.menus);
+        this.menus[0].entreeName = this.getItem(this.menus[0].entree);
+        this.menus[0].platName = this.getItem(this.menus[0].plat);
+        this.menus[0].dessertName = this.getItem(this.menus[0].dessert);
         console.log(this.menus);
         loading.dismiss();
       }, err => {
@@ -35,6 +38,17 @@ export class MenuPage implements OnInit {
         loading.dismiss();
       });
   }
+
+  async getItem(item: any){
+    console.log(1);
+    this.api.getOneItem(item)
+      .subscribe(res => {
+        console.log(res);
+        return res.nameItem
+      }, err => {
+        console.log(err);
+        });
+  } 
 
   getTodayDate()
   {

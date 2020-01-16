@@ -17,10 +17,6 @@ router.get('/api/item/:id', (req, res) => {
     controller.getOneItem(req, res);
   });
 
-router.get('/api/item/:id', (req, res) => {
-    controller.getOneItem(req, res);
-  });
-
 router.get('/api/items', (req, res) => {
     controller.getAllItem(req, res);
   });
@@ -56,6 +52,5 @@ router.put('/api/item/:id', (req, res) => {
 router.delete('/api/menu/:id', (req, res) => {
   controller.deleteMenu(req, res);
 });
-
 
 module.exports = router;
