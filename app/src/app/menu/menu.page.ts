@@ -45,11 +45,13 @@ export class MenuPage implements OnInit {
       .subscribe(res => {
         this.menus=res;
         console.log(this.menus);
-        for (var i=0; i<this.menus.length;i++){
-          console.log(this.menus[i].entree);
+        for (var i=0; i<this.menus.length; i++){
           this.menus[i].entreeName = this.getItem(this.menus[i].entree);
+          console.log(this.menus[i].entreeName);
           this.menus[i].platName = this.getItem(this.menus[i].plat);
+          console.log(this.menus[i].platName);
           this.menus[i].dessertName = this.getItem(this.menus[i].dessert);
+          console.log(this.menus[i].dessertName);
         }
         console.log(this.menus);
         loading.dismiss();
@@ -59,11 +61,9 @@ export class MenuPage implements OnInit {
       });
   }
 
-  getTodayDate()
-  {
+  getTodayDate() {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     this.currentDate = this.currentDate.toLocaleDateString('fr-FR', options)
-    console.log(this.currentDate);
   }
   
   ngOnInit() {
