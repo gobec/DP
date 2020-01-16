@@ -27,9 +27,8 @@ export class MenuPage implements OnInit {
     await loading.present();
     await this.api.getOneItem(item)
       .subscribe(res => {
-        console.log(res);
-        return res.nameItem
         loading.dismiss();
+        return res.nameItem
       }, err => {
         console.log(err);
         loading.dismiss();
@@ -46,6 +45,7 @@ export class MenuPage implements OnInit {
         this.menus=res;
         console.log(this.menus);
         for (var i=0; i<this.menus.length;i++){
+          console.log(this.menus[i].entree);
           this.menus[i].entreeName = this.getItem(this.menus[i].entree);
           this.menus[i].platName = this.getItem(this.menus[i].plat);
           this.menus[i].dessertName = this.getItem(this.menus[i].dessert);
